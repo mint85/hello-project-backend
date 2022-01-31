@@ -63,4 +63,4 @@ app.put("/ideas/:id", async (req, res) => {
     }
 })
 
-app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
+app.listen(PORT || 3000, () => console.log(`Server is listening on ${PORT}`));
