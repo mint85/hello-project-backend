@@ -28,6 +28,7 @@ const Ideas = mongoose.model("Ideas", ideasSchema)
 app.use(express.json());
 app.use(cors());
 
+
 app.get("/", (req, res) => {
     res.send("Hello Project");
 });
@@ -37,8 +38,16 @@ app.get("/ideas", async (req, res) => {
         res.json(await Ideas.find({}))
     } catch (error) {
         res.status(400).json(error)
-    }
-})
+    };
+});
+
+app.post("/ideas", async (req, res) => {
+    try {
+        res.json(await Ideas.create(req.body));
+    } catch (error) {
+        res.status(400).json(error);
+    };
+});
 
 
 
