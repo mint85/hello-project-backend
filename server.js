@@ -37,7 +37,7 @@ app.get("/ideas", async (req, res) => {
     try {
         res.json(await Ideas.find({}))
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error);
     };
 });
 
@@ -59,7 +59,15 @@ app.put("/ideas/:id", async (req, res) => {
             }
         ));
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error);
+    }
+})
+
+app.delete("/ideas/:id", async (req, res) => {
+    try {
+        res.json(await Ideas.findByIdAndDelete(req.params.id))
+    } catch (error) {
+        res.status(400).json(error);
     }
 })
 
